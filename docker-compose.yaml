@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  # omoponfhir:
+  #   build:
+  #     context: ./hapi
+  #     dockerfile: Dockerfile.hapi
+  #   ports:
+  #     - "8080:8080"
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.api
+    ports:
+      - "4000:4000"
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+      - /app/node_modules
