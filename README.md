@@ -1,4 +1,4 @@
-# stroke-risk-app
+# stroke-risk-app - CS-6440 Project
 
 This repo contains the FHIR server, AI API, and web app for the stroke risk app.
 
