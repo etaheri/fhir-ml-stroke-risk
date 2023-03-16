@@ -1,21 +1,23 @@
 version: "3.9"
 
 services:
-  # omoponfhir:
-  #   build:
-  #     context: ./hapi
-  #     dockerfile: Dockerfile.hapi
-  #   ports:
-  #     - "8080:8080"
-  #   deploy:
-  #     restart_policy:
-  #       condition: on-failure
+  omoponfhir:
+    build:
+      context: ./hapi
+      dockerfile: Dockerfile.hapi
+    ports:
+      - "8080:8080"
+    deploy:
+      restart_policy:
+        condition: on-failure
   api:
     build:
       context: ./api
       dockerfile: Dockerfile.api
     ports:
       - "4000:4000"
+    volumes:
+      - ./api:/api
   app:
     build:
       context: ./app

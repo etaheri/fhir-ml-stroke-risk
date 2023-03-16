@@ -1,0 +1,65 @@
+{
+  "resourceType": "Patient",
+  "name": [
+    {
+      "family": "Doe",
+      "given": ["John"]
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-01-01",
+  "address": [
+    {
+      "line": ["123 Main St"],
+      "city": "Anytown",
+      "state": "CA",
+      "postalCode": "12345",
+      "country": "USA"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "555-555-5555",
+      "use": "home"
+    }
+  ],
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+        "code": "S",
+        "display": "Never Married"
+      }
+    ],
+    "text": "Never Married"
+  },
+  "extension": [
+    {
+      "url": "http://example.com/fhir/StructureDefinition/jobType",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.com/fhir/job-type",
+            "code": "Private",
+            "display": "Private"
+          }
+        ],
+        "text": "Private"
+      }
+    },
+    {
+      "url": "http://example.com/fhir/StructureDefinition/residenceType",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.com/fhir/residence-type",
+            "code": "Rural",
+            "display": "Rural"
+          }
+        ],
+        "text": "Rural"
+      }
+    }
+  ]
+}

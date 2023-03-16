@@ -1,0 +1,36 @@
+{
+    "resourceType": "Patient",
+    "name": [
+      {
+        "family": "Smith",
+        "given": [
+          "Jane"
+        ]
+      }
+    ],
+    "gender": "female",
+    "birthDate": "1990-06-15",
+    "address": [
+      {
+        "line": [
+          "456 Elm St"
+        ],
+        "city": "Somewhere",
+        "state": "NY",
+        "postalCode": "67890",
+        "country": "USA"
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "555-123-4567",
+        "use": "home"
+      },
+      {
+        "system": "email",
+        "value": "jane.smith@example.com",
+        "use": "home"
+      }
+    ]
+  }

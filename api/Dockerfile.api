@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.8
 RUN mkdir /api 
 COPY . /api
 COPY pyproject.toml /api 
@@ -11,4 +11,4 @@ RUN poetry install --no-dev
 
 EXPOSE 4000
 
-CMD [ "poetry", "run", "flask", "run", "-p", "4000", "-h", "0.0.0.0" ]
+CMD [ "poetry", "run", "flask", "run", "-p", "4000", "-h", "0.0.0.0", "--reload" ]

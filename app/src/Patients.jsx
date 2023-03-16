@@ -1,10 +1,11 @@
 import { createResource, For } from "solid-js";
 
 const fetchPatients = async () =>
-  (await fetch(`https://rickandmortyapi.com/api/character`)).json();
+  (await fetch(`http://localhost:8080/fhir/Patient`)).json();
 
 function Patients() {
   const [patients] = createResource(fetchPatients);
+
 
   return (
     <>
@@ -21,19 +22,19 @@ function Patients() {
               </tr>
             </thead>
             <tbody>
-              <For each={patients()?.results}>
+              <For each={patients()?.entry}>
                 {(patient) => (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th
                       scope="row"
                       class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      {patient.name}
+                      {patient?.resource?.name[0].family}, {patient?.resource?.name[0].given}
                     </th>
                     <td class="px-6 py-4">
                       {" "}
                       <a
-                        href={patient.id}
+                        href={patient?.resource?.id}
                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
                         View Patient

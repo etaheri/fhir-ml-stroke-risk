@@ -5,20 +5,30 @@ import os
 
 app = Flask(__name__)
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+    response.headers.add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
+    return response
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 model_file = os.path.join(basedir, 'static/stroke_prediction_model_best_rf.joblib')
 
 model = joblib.load(model_file)
 
+# Computes the risk of a patient using the probability of having a heart attack
+# probability: probability of having a heart attack
+# max_probability: maximum probability of having a heart attack
+# risk: risk of having a heart attack
 def prob_to_risk_two(probability):
     max_probability = 0.7764451659451659 # computed when training the model
     risk = probability * 100 / max_probability
-    return risk
+    return round(risk)
 
 @app.route('/')
 def index():
-    return 'Hello, World!'
+    return 'Stroke score api'
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -45,4 +55,7 @@ def predict():
     
     prediction = model.predict_proba([input_values])[0][1]
 
-    return jsonify({'stroke_prediction': prediction})
+    return jsonify({'stroke_prediction': prob_to_risk_two(prediction)})
+
+if __name__ == '__main__':
+    app.run(debug=True)
