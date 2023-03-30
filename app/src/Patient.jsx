@@ -25,20 +25,31 @@ const fetchScore = async (data) =>
     })
   ).json();
 
-  function getColorFromPercentage(percentage) {
-    if (percentage < 0) percentage = 0;
-    if (percentage > 100) percentage = 100;
-  
-    const red = percentage > 70 ? 255 : Math.floor(255 * (percentage / 100));
-    const green = percentage < 50 ? 255 : Math.floor(255 * ((100 - percentage) / 50));
-  
-    const hexRed = red.toString(16).padStart(2, '0');
-    const hexGreen = green.toString(16).padStart(2, '0');
-    const hexBlue = '00';
-    
-    console.log(`#${hexRed}${hexGreen}${hexBlue}`)
-    return `#${hexRed}${hexGreen}${hexBlue}`;
+function getColorFromPercentage(percentage) {
+  if (percentage < 0) percentage = 0;
+  if (percentage > 100) percentage = 100;
+
+  const red = percentage > 70 ? 255 : Math.floor(255 * (percentage / 100));
+  const green =
+    percentage < 50 ? 255 : Math.floor(255 * ((100 - percentage) / 50));
+
+  const hexRed = red.toString(16).padStart(2, "0");
+  const hexGreen = green.toString(16).padStart(2, "0");
+  const hexBlue = "00";
+
+  return `#${hexRed}${hexGreen}${hexBlue}`;
+}
+
+function calculateAge(dateOfBirth) {
+  var now = new Date();
+  var dob = new Date(dateOfBirth);
+  var yearDiff = now.getFullYear() - dob.getFullYear();
+  var monthDiff = now.getMonth() - dob.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < dob.getDate())) {
+    yearDiff--;
   }
+  return yearDiff;
+}
 
 // {
 //   "gender": "Male",
@@ -52,6 +63,7 @@ const fetchScore = async (data) =>
 //   "bmi": 28.10,
 //   "smoking_status": "smokes"
 // }
+
 function Patient() {
   const params = useParams();
   const [patient] = createResource(params.id, fetchPatient);
@@ -61,21 +73,75 @@ function Patient() {
 
   createEffect(async () => {
     if (!patient() || !observations() || !conditions()) return;
+
+    const gender =
+      patient()?.gender.toUpperCase() === "MALE" ? "Male" : "Female";
+    
+      const age = calculateAge(patient()?.birthDate);
+    
+    const hypertension = conditions()?.entry.find(
+      (condition) => condition.resource.code.coding[0].code === "38341003"
+    )
+      ? 1
+      : 0;
+    const heart_disease = conditions()?.entry.find(
+      (condition) => condition.resource.code.coding[0].code === "49601007"
+    )
+      ? 1
+      : 0;
+
+    const ever_married = patient()?.maritalStatus?.text === 'Yes' ? 'Yes' : 'No';
+    
+    const work_type = patient()?.extension?.find(
+      (ex) => ex.url === "http://example.com/fhir/StructureDefinition/jobType"
+    )?.valueString || "Private";
+
+    const Residence_type = patient()?.extension?.find(
+      (ex) => ex.url === "http://example.com/fhir/StructureDefinition/residenceType"
+    )?.valueString || "Rural";
+    
+    const bmi = observations()?.entry.find(
+      (observation) => observation.resource.code.coding[0].code === "39156-5"
+    )?.resource.valueQuantity.value;
+
+    const avg_glucose_level = observations()?.entry.find(
+      (observation) => observation.resource.code.coding[0].code === "1558-6"
+    )?.resource.valueQuantity.value;
+    
+    const smoking_status =
+      observations()?.entry.find(
+        (observation) => observation.resource.code.coding[0].code === "72166-2"
+      )?.resource.valueCodeableConcept.coding[0].code === "449868002"
+        ? "smokes"
+        : "never smoked";
+
     const data = {
-      gender: "Male",
-      age: 79,
-      hypertension: 1,
-      heart_disease: 1,
-      ever_married: "No",
-      work_type: "Never_worked",
-      Residence_type: "Urban",
-      avg_glucose_level: 60,
-      bmi: 28.1,
-      smoking_status: "smokes",
+      gender,
+      age,
+      hypertension,
+      heart_disease,
+      ever_married,
+      work_type,
+      Residence_type,
+      avg_glucose_level,
+      bmi,
+      smoking_status,
     };
     const res = await fetchScore(data);
     setScore(res);
   });
+
+
+  const ever_married = patient()?.maritalStatus?.text === 'Yes' ? 'Yes' : 'No';
+    
+  const work_type = patient()?.extension?.find(
+    (ex) => ex.url === "http://example.com/fhir/StructureDefinition/jobType"
+  )?.valueString || "Private";
+
+  const Residence_type = patient()?.extension?.find(
+    (ex) => ex.url === "http://example.com/fhir/StructureDefinition/residenceType"
+  )?.valueString || "Rural";
+  
 
   return (
     <>
@@ -98,8 +164,24 @@ function Patient() {
                     {patient()?.name[0].given}
                   </p>
                   <p class="text-base font-semibold text-gray-900">
+                    Gender: {patient()?.gender}
+                  </p>
+                  <p class="text-base font-semibold text-gray-900">
                     DOB: {patient()?.birthDate}
                   </p>
+                  <p class="text-base font-semibold text-gray-900">
+                    Age: {calculateAge(patient()?.birthDate)}
+                  </p>
+                  <p class="text-base font-semibold text-gray-900">
+                    Marital Status: {ever_married}
+                  </p>
+                  <p class="text-base font-semibold text-gray-900">
+                    Job Type: {work_type}
+                  </p>
+                  <p class="text-base font-semibold text-gray-900">
+                    Residence Type: {Residence_type}
+                  </p>
+
                 </div>
               </li>
             </ul>
@@ -116,7 +198,11 @@ function Patient() {
             <div class="w-full bg-gray-200 rounded-full h-6">
               <div
                 class="h-6 rounded-full"
-                style={`width: ${score()?.stroke_prediction || 0}%; background-color: ${getColorFromPercentage(score()?.stroke_prediction || 0)};`}
+                style={`width: ${
+                  score()?.stroke_prediction || 0
+                }%; background-color: ${getColorFromPercentage(
+                  score()?.stroke_prediction || 0
+                )};`}
               ></div>
             </div>
             {}
