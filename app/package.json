@@ -6,7 +6,8 @@
     "start": "vite --host 0.0.0.0",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "heroku-postbuild": "vite build"
   },
   "license": "MIT",
   "devDependencies": {

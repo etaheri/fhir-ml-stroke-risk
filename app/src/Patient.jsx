@@ -2,21 +2,21 @@ import { useParams } from "@solidjs/router";
 import { createResource, createEffect, createSignal } from "solid-js";
 
 const fetchPatient = async (id) =>
-  (await fetch(`http://localhost:8080/fhir/Patient/${id}`)).json();
+  (await fetch(`${import.meta.env.SOLID_APP_HAPI_URL}/fhir/Patient/${id}`)).json();
 
 const fetchObservations = async (id) =>
   (
-    await fetch(`http://localhost:8080/fhir/Observation?subject=Patient/${id}`)
+    await fetch(`${import.meta.env.SOLID_APP_HAPI_URL}/fhir/Observation?subject=Patient/${id}`)
   ).json();
 
 const fetchConditions = async (id) =>
   (
-    await fetch(`http://localhost:8080/fhir/Condition?subject=Patient/${id}`)
+    await fetch(`${import.meta.env.SOLID_APP_HAPI_URL}/fhir/Condition?subject=Patient/${id}`)
   ).json();
 
 const fetchScore = async (data) =>
   (
-    await fetch(`http://localhost:4000/predict`, {
+    await fetch(`${import.meta.env.SOLID_APP_API_URL}/predict`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
