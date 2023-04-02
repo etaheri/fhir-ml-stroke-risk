@@ -1,7 +1,7 @@
 import { createResource, For } from "solid-js";
 
 const fetchPatients = async () =>
-  (await fetch(`${import.meta.env.SOLID_APP_HAPI_URL}/fhir/Patient`)).json();
+  (await fetch(`${import.meta.env.VITE_SOLID_APP_HAPI_URL}/fhir/Patient`)).json();
 
 function Patients() {
   const [patients] = createResource(fetchPatients);
