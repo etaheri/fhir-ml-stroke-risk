@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 5000
 //   })
 // )
 
+
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // https://facebook.github.io/create-react-app/docs/deployment#serving-apps-with-client-side-routing
