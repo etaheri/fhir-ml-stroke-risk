@@ -7,6 +7,13 @@ This repo contains the FHIR server, AI API, and web app for the stroke risk app.
 docker-compose up
 ```
 
+## Deployed Environments
+APP: https://stroke-score-app.herokuapp.com/
+
+API: https://stroke-score-api.herokuapp.com/
+
+HAPI FHIR Server: https://lionfish-app-fjtuh.ondigitalocean.app/
+
 ## File Structure
 .
 ├── api/ - AI API for stroke score prediction
