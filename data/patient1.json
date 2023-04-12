@@ -2,12 +2,12 @@
   "resourceType": "Patient",
   "name": [
     {
-      "family": "Doe",
-      "given": ["John"]
+      "family": "Thompson",
+      "given": ["Albert"]
     }
   ],
   "gender": "male",
-  "birthDate": "1980-01-01",
+  "birthDate": "1944-03-14",
   "address": [
     {
       "line": ["123 Main St"],
@@ -27,9 +27,9 @@
   "maritalStatus": {
     "coding": [
       {
-        "system": "http://example.com/marital-status",
-        "code": "ever_married",
-        "display": "Ever Married"
+        "system": "http://hl7.org/fhir/v3/MaritalStatus",
+        "code": "M",
+        "display": "Married"
       }
     ],
     "text": "Yes"
@@ -41,11 +41,11 @@
         "coding": [
           {
             "system": "http://example.com/fhir/job-type",
-            "code": "Private",
-            "display": "Private"
+            "code": "Self-employed",
+            "display": "Self Employed"
           }
         ],
-        "text": "Private"
+        "text": "Self Employed"
       }
     },
     {
@@ -54,11 +54,11 @@
         "coding": [
           {
             "system": "http://example.com/fhir/residence-type",
-            "code": "Rural",
-            "display": "Rural"
+            "code": "Urban",
+            "display": "Urban"
           }
         ],
-        "text": "Rural"
+        "text": "Urban"
       }
     }
   ]

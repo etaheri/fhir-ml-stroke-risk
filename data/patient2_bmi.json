@@ -22,12 +22,12 @@
     ]
   },
   "subject": {
-    "reference": "Patient/1",
-    "display": "Albert Thompson"
+    "reference": "Patient/2",
+    "display": "Jane Smith"
   },
   "effectiveDateTime": "2023-03-14T10:00:00Z",
   "valueQuantity": {
-    "value": 28.1,
+    "value": 24.7,
     "unit": "kg/m2",
     "system": "http://unitsofmeasure.org",
     "code": "kg/m2"

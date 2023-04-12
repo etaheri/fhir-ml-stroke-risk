@@ -3,7 +3,7 @@ version: "3.9"
 services:
   omoponfhir:
     build:
-      context: ./hapi/old
+      context: ./hapi
       dockerfile: Dockerfile.hapi
     ports:
       - "8080:8080"

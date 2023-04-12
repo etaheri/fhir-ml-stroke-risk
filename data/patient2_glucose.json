@@ -22,12 +22,12 @@
       ]
     },
     "subject": {
-      "reference": "Patient/1",
-      "display": "Albert Thompson"
+      "reference": "Patient/2",
+      "display": "Jane Smith"
     },
     "effectiveDateTime": "2023-03-14T10:00:00Z",
     "valueQuantity": {
-      "value": 186.21,
+      "value": 104.97,
       "unit": "mg/dL",
       "system": "http://unitsofmeasure.org",
       "code": "mg/dL"

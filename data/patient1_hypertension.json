@@ -2,7 +2,7 @@
     "resourceType": "Condition",
     "subject": {
       "reference": "Patient/1",
-      "display": "John Doe"
+      "display": "Albert Thompson"
     },
     "code": {
       "coding": [

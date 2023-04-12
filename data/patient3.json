@@ -4,12 +4,12 @@
       {
         "family": "Smith",
         "given": [
-          "Jane"
+          "Ethan"
         ]
       }
     ],
-    "gender": "female",
-    "birthDate": "1973-03-15",
+    "gender": "male",
+    "birthDate": "1998-01-20",
     "address": [
       {
         "line": [
@@ -32,11 +32,11 @@
       "coding": [
         {
           "system": "http://hl7.org/fhir/v3/MaritalStatus",
-          "code": "M",
-          "display": "Married"
+          "code": "S",
+          "display": "Never Married"
         }
       ],
-      "text": "Yes"
+      "text": "No"
     },
     "extension": [
       {
@@ -45,11 +45,11 @@
           "coding": [
             {
               "system": "http://example.com/fhir/job-type",
-              "code": "Govt_job",
-              "display": "Government Job"
+              "code": "Private",
+              "display": "Private"
             }
           ],
-          "text": "Government Job"
+          "text": "Private"
         }
       },
       {
@@ -58,11 +58,11 @@
           "coding": [
             {
               "system": "http://example.com/fhir/residence-type",
-              "code": "Rural",
-              "display": "Rural"
+              "code": "Urban",
+              "display": "Urban"
             }
           ],
-          "text": "Rural"
+          "text": "Urban"
         }
       }
     ]

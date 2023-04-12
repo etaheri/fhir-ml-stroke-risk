@@ -1,7 +1,8 @@
 {
     "resourceType": "Condition",
     "subject": {
-      "reference": "Patient/1"
+      "reference": "Patient/1",
+      "display": "Albert Thompson"
     },
     "code": {
       "coding": [

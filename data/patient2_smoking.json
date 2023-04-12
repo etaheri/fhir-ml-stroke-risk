@@ -22,18 +22,18 @@
     ]
   },
   "subject": {
-    "reference": "Patient/1",
-    "display": "Albert Thompson"
+    "reference": "Patient/2",
+    "display": "Jane Smith"
   },
   "effectiveDateTime": "2023-03-14T10:00:00Z",
   "valueCodeableConcept": {
     "coding": [
       {
         "system": "http://snomed.info/sct",
-        "code": "449868002",
-        "display": "Formerly smoked"
+        "code": "266919005",
+        "display": "Never smoked"
       }
     ],
-    "text": "Formerly smoked"
+    "text": "Never smoked"
   }
 }
