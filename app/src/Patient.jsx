@@ -81,7 +81,6 @@ function calculateAge(dateOfBirth) {
   return yearDiff;
 }
 
-
 // high risk sample
 // {
 //   "gender": "Male",
@@ -159,12 +158,12 @@ function Patient() {
     )?.resource.valueQuantity.value;
 
     // Get the smoking status from the observations
-    const smoking_status =
-      observations()?.entry.find(
-        (observation) => observation.resource.code.coding[0].code === "72166-2"
-      )?.resource.valueCodeableConcept.coding[0].code === "449868002"
-        ? "smokes"
-        : "never smoked";
+    // 449868002 Formerly smoked
+    // 266919005 Never smoked
+    // 428041000124106 smokes
+    const smoking_status = observations()?.entry.find(
+      (observation) => observation.resource.code.coding[0].code === "72166-2"
+    )?.resource.valueCodeableConcept.coding[0].code;
 
     // Send the data to the API
     const data = {
@@ -177,7 +176,12 @@ function Patient() {
       Residence_type,
       avg_glucose_level,
       bmi,
-      smoking_status,
+      smoking_status:
+        smoking_status === "449868002"
+          ? "formerly smoked"
+          : smoking_status === "266919005"
+          ? "never smoked"
+          : "smokes",
     };
     const res = await fetchScore(data);
     setScore(res);
@@ -188,7 +192,7 @@ function Patient() {
     // get work type from the extension on the patient resource
     const workType = patient()?.extension?.find(
       (ex) => ex.url === "http://example.com/fhir/StructureDefinition/jobType"
-    )?.valueCodeableConcept?.coding[0]?.code;
+    )?.valueCodeableConcept?.text;
 
     setWorkType(workType);
 
@@ -196,7 +200,7 @@ function Patient() {
     const residenceType = patient()?.extension?.find(
       (ex) =>
         ex.url === "http://example.com/fhir/StructureDefinition/residenceType"
-    )?.valueCodeableConcept.coding[0].code;
+    )?.valueCodeableConcept.text;
 
     setResidenceType(residenceType);
   });
@@ -240,7 +244,7 @@ function Patient() {
                       Age: {calculateAge(patient()?.birthDate)}
                     </p>
                     <p class="text-base font-semibold text-gray-900">
-                      Marital Status: {everMarried}
+                      Ever Married: {everMarried}
                     </p>
                     <p class="text-base font-semibold text-gray-900">
                       Job Type: {workType}
