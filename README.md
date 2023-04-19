@@ -2,6 +2,8 @@
 
 This repo contains the FHIR server, AI API, and web app for the stroke risk app.
 
+## Submission Documentation
+
 [Submission Documentation](./documentation)
 
 ## Quickstart
@@ -35,9 +37,10 @@ HAPI FHIR Server: https://lionfish-app-fjtuh.ondigitalocean.app/
 │   └── Dockerfile.app
 ├── hapi/ - FHIR server (HAPI FHIR)
 │   └── Dockerfile.hapi - dockerfile to run the hapi server
-├── resources/ - resources for the app
+├── model/ - resources training the AI model
 │   ├── Project_AI_Model.ipynb - notebook for training the AI model
 │   └── stroke_prediction_model_best_rf.joblib - trained AI model
+|   └── stroke_prediction_model_best_rf.pkl - stroke dataset
 ├── data/ - sample patient data
 ├── documentation/ - project documentation
 └── docker-compose - docker-compose file to run the app
@@ -46,6 +49,8 @@ HAPI FHIR Server: https://lionfish-app-fjtuh.ondigitalocean.app/
 ## Project Breakdown
 ### API
 The API is build with Flask and uses the scikit-learn library to make the strok score predictions. The API is run in a docker container and is accessible at http://localhost:5000.
+
+The model was trained in google colab and is saved as a joblib file. The model is loaded into the API when the API is run. [Google Collab Link](https://colab.research.google.com/drive/1pNKFlEPgEzvQCM-l91bhIkVQJXNl3fVj?usp=sharing)
 
 ### App
 The app is a single page application built with SolidJS. The app is run in a docker container and is accessible at http://localhost:3000.
