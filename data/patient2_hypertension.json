@@ -1,0 +1,25 @@
+{
+    "resourceType": "Condition",
+    "subject": {
+      "reference": "Patient/5",
+      "display": "Jane Smith"
+    },
+    "code": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "38341003",
+          "display": "Hypertension"
+        }
+      ],
+      "text": "Hypertension"
+    },
+    "clinicalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        }
+      ]
+    }
+  }

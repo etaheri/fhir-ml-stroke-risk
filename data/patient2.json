@@ -9,7 +9,7 @@
       }
     ],
     "gender": "female",
-    "birthDate": "1973-03-15",
+    "birthDate": "1958-03-15",
     "address": [
       {
         "line": [
@@ -32,11 +32,11 @@
       "coding": [
         {
           "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
-          "code": "M",
-          "display": "Married"
+          "code": "S",
+          "display": "Never Married"
         }
       ],
-      "text": "Yes"
+      "text": "No"
     },
     "extension": [
       {
@@ -45,11 +45,11 @@
           "coding": [
             {
               "system": "http://example.com/fhir/job-type",
-              "code": "Govt_job",
-              "display": "Government Job"
+              "code": "Self-employed",
+              "display": "Self Employed"
             }
           ],
-          "text": "Government Job"
+          "text": "Self Employed"
         }
       },
       {

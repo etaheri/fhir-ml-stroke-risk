@@ -103,6 +103,7 @@ function Patient() {
   const [score, setScore] = createSignal(null);
   const [workType, setWorkType] = createSignal(null);
   const [residenceType, setResidenceType] = createSignal(null);
+  const [everMarried, setEverMarried] = createSignal(null);
 
   createEffect(async () => {
     if (!patient() || !observations() || !conditions()) return;
@@ -203,10 +204,13 @@ function Patient() {
     )?.valueCodeableConcept.text;
 
     setResidenceType(residenceType);
+
+    // Check if the patient has ever been married, pass to the API as "Yes" or "No"
+    const everMarried = patient()?.maritalStatus?.text === "Yes" ? "Yes" : "No";
+    
+    setEverMarried(everMarried);
   });
 
-  // Check if the patient has ever been married, pass to the API as "Yes" or "No"
-  const everMarried = patient()?.maritalStatus?.text === "Yes" ? "Yes" : "No";
 
   return (
     <>

@@ -27,7 +27,7 @@
   },
   "effectiveDateTime": "2023-03-14T10:00:00Z",
   "valueQuantity": {
-    "value": 24.7,
+    "value": 28.1,
     "unit": "kg/m2",
     "system": "http://unitsofmeasure.org",
     "code": "kg/m2"

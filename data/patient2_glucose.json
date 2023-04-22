@@ -27,7 +27,7 @@
     },
     "effectiveDateTime": "2023-03-14T10:00:00Z",
     "valueQuantity": {
-      "value": 104.97,
+      "value": 250,
       "unit": "mg/dL",
       "system": "http://unitsofmeasure.org",
       "code": "mg/dL"

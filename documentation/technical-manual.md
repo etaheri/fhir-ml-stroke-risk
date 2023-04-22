@@ -47,7 +47,7 @@ The google colab notebook can be found [here](https://colab.research.google.com/
 
 ### 3.4 HAPI FHIR Server
 
-The HAPI FHIR server is a Java application that uses the [HAPI FHIR](https://hapifhir.io/) library. The application used the [hapiproject/hapi](https://hub.docker.com/r/hapiproject/hapi) docker image to run the HAPI FHIR server. The HAPI FHIR server utilizes a [H2](https://www.h2database.com/html/main.html) database to persist patient data. The application is deployed to Digital Ocean. The application is deployed using the [Docker](https://www.docker.com/) container platform. The application can be deployed to any hosting providers that supports docker containers.
+The HAPI FHIR server is a Java application that uses the [HAPI FHIR](https://hapifhir.io/) library. The application uses the [hapiproject/hapi](https://hub.docker.com/r/hapiproject/hapi) docker image to run the HAPI FHIR server. The HAPI FHIR server utilizes a [H2](https://www.h2database.com/html/main.html) database to persist patient data. The application is deployed to Digital Ocean. The application is deployed using the [Docker](https://www.docker.com/) container platform. The application can be deployed to any hosting providers that supports docker containers.
 
 The HAPI FHIR server src code can be found in the `hapi` folder. There is no code for the HAPI FHIR server, as the docker image is used to run the server.
 

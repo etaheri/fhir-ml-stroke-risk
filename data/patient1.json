@@ -7,7 +7,7 @@
     }
   ],
   "gender": "male",
-  "birthDate": "1944-03-14",
+  "birthDate": "1941-03-14",
   "address": [
     {
       "line": ["123 Main St"],
@@ -41,11 +41,11 @@
         "coding": [
           {
             "system": "http://example.com/fhir/job-type",
-            "code": "Self-employed",
-            "display": "Self Employed"
+            "code": "Never_worked",
+            "display": "Never Worked"
           }
         ],
-        "text": "Self Employed"
+        "text": "Never Worked"
       }
     },
     {

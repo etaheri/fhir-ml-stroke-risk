@@ -30,10 +30,10 @@
     "coding": [
       {
         "system": "http://snomed.info/sct",
-        "code": "266919005",
-        "display": "Never smoked"
+        "code": "449868002",
+        "display": "Formerly smoked"
       }
     ],
-    "text": "Never smoked"
+    "text": "Formerly smoked"
   }
 }
