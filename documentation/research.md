@@ -20,4 +20,5 @@
 - https://www.snomed.org/
 - https://www.hl7.org/fhir/observation-example-f001-glucose.html
 - http://hl7.org/fhir/R4/bmi.html 
-
+- https://www.hl7.org/fhir/
+- https://www.hl7.org/implement/standards/

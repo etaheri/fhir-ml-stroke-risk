@@ -1,10 +1,10 @@
-# Stoke Prediction - CS-6440 Project - etaheri6
+# FHIR & ML Exploration: Stroke Risk App
 
 This repo contains the FHIR server, AI API, and web app for the stroke risk app.
 
-## Submission Documentation
+## Documentation
 
-[Submission Documentation](./documentation)
+[Documentation](./documentation)
 
 ## Quickstart
 
@@ -15,16 +15,6 @@ Run the following command to spin up the required containers:
 ```
 docker-compose up
 ```
-
-## Deployed Environments
-
-A deployed app is available for testing:
-
-SPA: https://stroke-score-app.herokuapp.com/
-
-API: https://stroke-score-api.herokuapp.com/
-
-HAPI FHIR Server: https://lionfish-app-fjtuh.ondigitalocean.app/
 
 ## File Structure
 ```
